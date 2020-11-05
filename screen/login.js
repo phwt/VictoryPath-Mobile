@@ -5,10 +5,10 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Victory Path</Text>
+      <Text style={styles.text}>Login</Text>
       <StatusBar style="auto" />
       <TouchableOpacity style={styles.button}>
-        <Text>Login or Register</Text>
+        <Text>Login</Text>
       </TouchableOpacity>
     </View>
   );
