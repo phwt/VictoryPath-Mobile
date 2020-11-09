@@ -10,6 +10,7 @@ export default function App() {
       <TouchableOpacity style={styles.button}>
         <Text>Login or Register</Text>
       </TouchableOpacity>
+      <Link></Link>
     </View>
   );
 }
