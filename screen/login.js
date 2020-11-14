@@ -8,6 +8,7 @@ import {
   View,
   TextInput,
 } from "react-native";
+import firebase from "firebase";
 
 export default function Login() {
   return (
@@ -21,6 +22,7 @@ export default function Login() {
       />
       <TouchableOpacity style={styles.button}>
         <Text>Login</Text>
+        {/* <login1 /> */}
       </TouchableOpacity>
     </View>
   );
