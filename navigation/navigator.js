@@ -4,6 +4,7 @@ import Login from "../screen/login";
 import Game from "../screen/game";
 import Register from "../screen/register";
 import Scoreboard from "../screen/scoreboard";
+import GameMode from "../screen/gamemode";
 
 const GamesNavigator = createStackNavigator(
   {
@@ -11,14 +12,10 @@ const GamesNavigator = createStackNavigator(
     GameScreen: {screen: Game, navigationOptions:{headerShown:false}},
     LoginScreen: Login,
     RegisterScreen: Register,
+    GameModeScreen: GameMode,
     // ScoreScreen: Scoreboard,
   },
-  {
-    // กำหนด defaultNavigationOptions (Slide 23-24)
-    defaultNavigationOptions: {
-    backgroundColor: "#4a148c",
-    }
-  }
+  
 );
 
 export default createAppContainer(GamesNavigator);
