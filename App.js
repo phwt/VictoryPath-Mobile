@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 import GamesNavigator from "./navigation/navigator";
-import Game from "./screen/game";
+import GameScreen from "./screen/gamescreen";
 import firebase from "firebase";
 
 var firebaseConfig = {
