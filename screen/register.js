@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   StyleSheet,
@@ -8,23 +8,50 @@ import {
   View,
   TextInput,
 } from "react-native";
+import firebase from "firebase";
+
+const signUp = (email, password) => {
+  console.log(email, password);
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      console.log("User account created & signed in!");
+    })
+    .catch((error) => {
+      if (error.code === "auth/email-already-in-use") {
+        console.log("That email address is already in use!");
+      }
+
+      if (error.code === "auth/invalid-email") {
+        console.log("That email address is invalid!");
+      }
+
+      console.error(error);
+    });
+};
 
 export default function Register() {
+  var [email, setEmail] = useState("");
+  var [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Register / สมัครสมาชิก</Text>
       <TextInput
         style={styles.textinput}
+        onChangeText={(value) => setEmail(value)}
         placeholder="Your name [ Your ID ]"
       ></TextInput>
       <TextInput
         style={styles.textinput}
+        onChangeText={(value) => setPassword(value)}
         placeholder="Your password"
         secureTextEntry={true}
       ></TextInput>
 
       <TouchableOpacity style={styles.button}>
-        <Text>Sign up</Text>
+        <Text onPress={() => signUp(email, password)}>Sign up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -57,7 +84,7 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     height: 40,
     marginBottom: 30,
-    color: "#fff",
+    color: "#000",
     borderBottomWidth: 1,
     borderBottomColor: "#f8f8f8",
   },

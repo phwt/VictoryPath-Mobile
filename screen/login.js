@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   StyleSheet,
@@ -10,19 +10,33 @@ import {
 } from "react-native";
 import firebase from "firebase";
 
+import auth from "@react-native-firebase/auth";
+
+const checkLogin = (email, password) => {
+  firebase.auth().signInWithEmailAndPassword(email, password);
+  console.log("success");
+};
+
 export default function Login() {
+  var [email, setEmail] = useState("");
+  var [password, setPassword] = useState("");
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Login / ลงทะเบียน</Text>
-      <TextInput style={styles.textinput} placeholder="Your name [ Your ID ]" />
+      <TextInput
+        style={styles.textinput}
+        placeholder="Your name [ Your ID ]"
+        onChangeText={(getEmail) => setEmail(getEmail)}
+      />
       <TextInput
         style={styles.textinput}
         placeholder="Your password"
+        onChangeText={(getPassword) => setPassword(getPassword)}
         secureTextEntry={true}
       />
       <TouchableOpacity style={styles.button}>
-        <Text>Login</Text>
-        {/* <login1 /> */}
+        <Text onPress={() => checkLogin(email, password)}>Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -56,7 +70,7 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     height: 40,
     marginBottom: 30,
-    color: "#fff",
+    color: "#000",
     borderBottomWidth: 1,
     borderBottomColor: "#f8f8f8",
   },
