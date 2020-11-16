@@ -11,7 +11,7 @@ import {
 import Login from "./login";
 import Register from "./register";
 
-const GameScreen = (props) => {
+const Game = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.setpositionapge}>
