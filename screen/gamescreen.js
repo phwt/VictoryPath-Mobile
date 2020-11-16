@@ -15,9 +15,17 @@ const Game = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.setpositionapge}>
+        <Image style={styles.logo} source={require("../assets/logo.jpg")} />
+        {/* <Image
+          style={styles.logo}
+          source={require("../assets/victorypath.jpg")}
+        /> */}
         <Image
           style={styles.image}
-          source={require("../assets/victorypath.jpg")}
+          source={{
+            uri:
+              "https://video-public.canva.com/VADn8UbzNr4/videos/8b30290d4b.gif",
+          }}
         />
 
         <TouchableOpacity
@@ -57,7 +65,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     alignItems: "center",
-    justifyContent: "center",
+  },
+  logo: {
+    marginTop: "20%",
+    height: "10%",
+    width: 300,
+    marginBottom: 70,
+    marginTop: 90,
+  },
+  txt: {
+    color: "red",
+    fontSize: 50,
   },
   setpositionbutton: {
     flexDirection: "row",
@@ -67,7 +85,7 @@ const styles = StyleSheet.create({
   },
   ttpbt: {
     backgroundColor: "black",
-    top: "25%",
+    top: "17%",
   },
   ttptxt: {
     fontSize: 20,
@@ -76,6 +94,10 @@ const styles = StyleSheet.create({
   image: {
     alignItems: "center",
     justifyContent: "center",
+    margin: 50,
+    width: 170,
+    transform: [{ rotate: "45deg" }],
+    height: 170,
   },
   text: {
     color: "#122eff",
@@ -86,9 +108,6 @@ const styles = StyleSheet.create({
   button: {
     top: "50%",
     margin: 3,
-    // borderRadius: 10,
-    // borderWidth: 5,
-    // borderColor: "grey",
   },
 });
 

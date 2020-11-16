@@ -15,13 +15,7 @@ export default function GameMode() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>VictoryPath</Text>
-      <Image
-        style={styles.image}
-        source={{
-          uri:
-            "https://video-public.canva.com/VADn8UbzNr4/videos/8b30290d4b.gif",
-        }}
-      />
+      <Image style={styles.image} source={require("../assets/boomboom.gif")} />
 
       <View style={styles.setbt1}>
         <TouchableOpacity style={styles.easybt}>
@@ -64,9 +58,8 @@ const styles = StyleSheet.create({
   image: {
     alignItems: "center",
     justifyContent: "center",
-    width: 150,
-    height: 150,
-    transform: [{ rotate: "45deg" }],
+    width: "80%",
+    height: "40%",
     margin: 40,
   },
   easybt: {
