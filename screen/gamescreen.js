@@ -16,10 +16,6 @@ const Game = (props) => {
     <View style={styles.container}>
       <View style={styles.setpositionapge}>
         <Image style={styles.logo} source={require("../assets/logo.jpg")} />
-        {/* <Image
-          style={styles.logo}
-          source={require("../assets/victorypath.jpg")}
-        /> */}
         <Image
           style={styles.image}
           source={{
@@ -34,7 +30,11 @@ const Game = (props) => {
             props.navigation.navigate("GameModeScreen");
           }}
         >
-          <Text style={styles.ttptxt}>Tap to play</Text>
+          <Image
+            style={((width = "20%"), (height = "20%"))}
+            source={require("../assets/playbutton.png")}
+          />
+          {/* <Text style={styles.ttptxt}>Tap to play</Text> */}
         </TouchableOpacity>
       </View>
       <View style={styles.setpositionbutton}>
