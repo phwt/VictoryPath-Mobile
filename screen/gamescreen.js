@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useRef } from "react";
 import {
+  Animated,
   Button,
   StyleSheet,
   Text,
@@ -10,6 +11,7 @@ import {
 } from "react-native";
 import Login from "./login";
 import Register from "./register";
+// import { Spring } from "react-spring/renderprops";
 
 const Game = (props) => {
   return (
@@ -23,7 +25,6 @@ const Game = (props) => {
               "https://video-public.canva.com/VADn8UbzNr4/videos/8b30290d4b.gif",
           }}
         />
-
         <TouchableOpacity
           style={styles.ttpbt}
           onPress={() => {
@@ -36,8 +37,13 @@ const Game = (props) => {
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.ttpbt}>
-          <Text> Tutorial </Text>
+          <Text style={styles.tutorail}> Tutorial </Text>
         </TouchableOpacity>
+        {/* <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+          {(props) => (
+            
+          )} */}
+        {/* </Spring> */}
       </View>
       <View style={styles.setpositionbutton}>
         <TouchableOpacity
@@ -67,6 +73,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     alignItems: "center",
+  },
+  tutorail: {
+    fontSize: 18,
   },
   logo: {
     marginTop: "20%",
