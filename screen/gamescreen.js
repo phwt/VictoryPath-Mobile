@@ -39,6 +39,9 @@ const Game = (props) => {
         <TouchableOpacity style={styles.ttpbt}>
           <Text style={styles.tutorail}> Tutorial </Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.ttpbt}>
+          <Text style={styles.tutorail}> Score Board </Text>
+        </TouchableOpacity>
         {/* <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {(props) => (
             
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   ttpbt: {
-    backgroundColor: "grey",
+    backgroundColor: "#cccccc",
     top: "7%",
     width: 150,
     height: 40,
@@ -103,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 10,
     borderWidth: 8,
-    borderColor: "grey",
+    borderColor: "#cccccc",
     marginBottom: 10,
   },
   ttptxt: {
@@ -125,7 +128,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button: {
-    top: "25%",
+    top: "20%",
     margin: 3,
   },
 });
