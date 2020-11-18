@@ -31,10 +31,12 @@ const Game = (props) => {
           }}
         >
           <Image
-            style={((width = "20%"), (height = "20%"))}
+            style={{ width: 25, height: 25 }}
             source={require("../assets/playbutton.png")}
           />
-          {/* <Text style={styles.ttptxt}>Tap to play</Text> */}
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.ttpbt}>
+          <Text> Tutorial </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.setpositionbutton}>
@@ -84,8 +86,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   ttpbt: {
-    backgroundColor: "black",
-    top: "17%",
+    backgroundColor: "grey",
+    top: "7%",
+    width: 150,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    borderWidth: 8,
+    borderColor: "grey",
+    marginBottom: 10,
   },
   ttptxt: {
     fontSize: 20,
@@ -106,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button: {
-    top: "50%",
+    top: "25%",
     margin: 3,
   },
 });
