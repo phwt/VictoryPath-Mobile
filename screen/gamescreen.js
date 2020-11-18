@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import Login from "./login";
 import Register from "./register";
+import ScoreScreen from "./scoreboard";
 // import { Spring } from "react-spring/renderprops";
 
 const Game = (props) => {
@@ -36,10 +37,17 @@ const Game = (props) => {
             source={require("../assets/playbutton.png")}
           />
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.ttpbt}>
           <Text style={styles.tutorail}> Tutorial </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.ttpbt}>
+
+        <TouchableOpacity
+          style={styles.ttpbt}
+          onPress={() => {
+            props.navigation.navigate("ScoreBoardScreen");
+          }}
+        >
           <Text style={styles.tutorail}> Score Board </Text>
         </TouchableOpacity>
         {/* <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>

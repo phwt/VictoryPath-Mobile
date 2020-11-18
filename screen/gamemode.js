@@ -9,14 +9,19 @@ import {
   TextInput,
   Image,
 } from "react-native";
-import { RotationGestureHandler } from "react-native-gesture-handler";
+import GameScreen from "./gamescreen";
 
 export default function GameMode() {
   return (
     <View style={styles.container}>
+      <TouchableOpacity>
+        <Image
+          style={styles.removelogo}
+          source={require("../assets/remove.png")}
+        />
+      </TouchableOpacity>
       <Text style={styles.header}>VictoryPath</Text>
       <Image style={styles.image} source={require("../assets/boomboom.gif")} />
-
       <View style={styles.setbt1}>
         <TouchableOpacity style={styles.easybt}>
           <Text style={styles.text}>Easy</Text>
@@ -43,6 +48,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
+  },
+  removelogo: {
+    marginRight: "85%",
+    width: "15%",
+    height: "4%",
   },
   text: {
     fontSize: 20,

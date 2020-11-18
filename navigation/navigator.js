@@ -11,7 +11,7 @@ const GamesNavigator = createStackNavigator({
   LoginScreen: Login,
   RegisterScreen: Register,
   GameModeScreen: GameMode,
-  // ScoreScreen: Scoreboard,
+  ScoreBoardScreen: Scoreboard,
 });
 
 export default createAppContainer(GamesNavigator);
