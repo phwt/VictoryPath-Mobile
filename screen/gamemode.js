@@ -11,9 +11,16 @@ import {
 } from "react-native";
 import GameScreen from "./gamescreen";
 
-export default function GameMode() {
+export default function GameMode(props) {
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+        onPress={() => {
+          props.navigation.navigate("GameScreen");
+        }}
+      >
+        <Image style={styles.exitbt} source={require("../assets/arrow.png")} />
+      </TouchableOpacity>
       <TouchableOpacity>
         <Image
           style={styles.removelogo}
@@ -48,6 +55,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
+  },
+  exitbt: {
+    width: 25,
+    height: 25,
+    marginLeft: "10%",
+    marginTop: "10%",
+    marginRight: "90%",
+    transform: [{ rotate: "180deg" }],
   },
   removelogo: {
     marginRight: "85%",

@@ -38,7 +38,12 @@ const Game = (props) => {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.ttpbt}>
+        <TouchableOpacity
+          style={styles.ttpbt}
+          onPress={() => {
+            props.navigation.navigate("TutorialScreen");
+          }}
+        >
           <Text style={styles.tutorail}> Tutorial </Text>
         </TouchableOpacity>
 

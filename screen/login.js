@@ -15,6 +15,7 @@ import auth from "@react-native-firebase/auth";
 const checkLogin = (email, password) => {
   firebase.auth().signInWithEmailAndPassword(email, password);
   console.log("success");
+  alert("Login Success");
 };
 
 export default function Login() {
@@ -35,7 +36,10 @@ export default function Login() {
         onChangeText={(getPassword) => setPassword(getPassword)}
         secureTextEntry={true}
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => checkLogin(email, password)}
+      >
         <Text onPress={() => checkLogin(email, password)}>Login</Text>
       </TouchableOpacity>
     </View>

@@ -16,7 +16,7 @@ const signUp = (email, password) => {
     .auth()
     .createUserWithEmailAndPassword(email, password)
     .then(() => {
-      console.log("User account created & signed in!");
+      alert("User account created & signed in!");
     })
     .catch((error) => {
       if (error.code === "auth/email-already-in-use") {
@@ -50,7 +50,10 @@ export default function Register() {
         secureTextEntry={true}
       ></TextInput>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => signUp(email, password)}
+      >
         <Text onPress={() => signUp(email, password)}>Sign up</Text>
       </TouchableOpacity>
     </View>

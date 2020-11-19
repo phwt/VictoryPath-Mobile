@@ -5,13 +5,24 @@ import Game from "../screen/gamescreen";
 import Register from "../screen/register";
 import Scoreboard from "../screen/scoreboard";
 import GameMode from "../screen/gamemode";
+import Tutorial from "../screen/tutorial";
 
 const GamesNavigator = createStackNavigator({
   GameScreen: { screen: Game, navigationOptions: { headerShown: false } },
   LoginScreen: Login,
   RegisterScreen: Register,
-  GameModeScreen: GameMode,
-  ScoreBoardScreen: Scoreboard,
+  GameModeScreen: {
+    screen: GameMode,
+    navigationOptions: { headerShown: false },
+  },
+  ScoreBoardScreen: {
+    screen: Scoreboard,
+    navigationOptions: { headerShown: false },
+  },
+  TutorialScreen: {
+    screen: Tutorial,
+    navigationOptions: { headerShown: false },
+  },
 });
 
 export default createAppContainer(GamesNavigator);

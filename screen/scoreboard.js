@@ -51,10 +51,7 @@ export default function Scoreboard(hello) {
           hello.navigation.navigate("GameScreen");
         }}
       >
-        <Image
-          style={{ width: 40, height: 40 }}
-          source={require("../assets/remove.png")}
-        />
+        <Image style={styles.exitbt} source={require("../assets/arrow.png")} />
       </TouchableOpacity>
       <Text style={styles.settext}>
         <Text style={styles.text1}>Score </Text>
@@ -77,6 +74,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     alignItems: "center",
+  },
+  exitbt: {
+    width: 25,
+    height: 25,
+    marginLeft: "10%",
+    marginTop: "10%",
+    marginRight: "90%",
+    transform: [{ rotate: "180deg" }],
   },
   scoretext: {
     color: "red",
