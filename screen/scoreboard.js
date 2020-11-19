@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   StyleSheet,
@@ -10,23 +10,64 @@ import {
   ImageBackground,
   TextInput,
 } from "react-native";
-// import { HeaderButtons, Item } from "react-navigation-header-buttons";
-// import { useSelector, useDispatch } from "react-redux";
+import firebase from "firebase";
 
-// import CustomHeaderButton from "../components/CustomHeaderButton";
-// import { toggleFavorite } from "../store/actions/mealsAction";
+export default function Scoreboard(hello) {
+  var [scores, setScores] = useState([]);
 
-export default function Scoreboard() {
+  // const a = firebase.auth().currentUser.email;
+  // console.log(a);
+
+  // const addScore = async () => {
+  //   await firebase.firestore().collection("score").add({
+  //     name: "adad",
+  //     point: 5,
+  //   });
+  // };
+
+  const showscore = async () => {
+    const score = await firebase.firestore().collection("score").get();
+    score.forEach((props) => {
+      console.log(props.data());
+      setScores((o) => {
+        return [...o, props.data()];
+      });
+    });
+  };
+  useEffect(() => {
+    showscore();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Image
-        style={{ width: 40, height: 40 }}
-        source={require("../assets/remove.png")}
-      />
+      {/* <Button
+        title="eiei"
+        onPress={() => {
+          addScore();
+        }}
+      /> */}
+      <TouchableOpacity
+        onPress={() => {
+          hello.navigation.navigate("GameScreen");
+        }}
+      >
+        <Image
+          style={{ width: 40, height: 40 }}
+          source={require("../assets/remove.png")}
+        />
+      </TouchableOpacity>
       <Text style={styles.settext}>
         <Text style={styles.text1}>Score </Text>
         <Text style={styles.text2}>Board</Text>
       </Text>
+      {scores.map((forn) => {
+        return (
+          <Text style={styles.scoretext} key={forn.name}>
+            {forn.name}
+            {forn.point}
+          </Text>
+        );
+      })}
     </View>
   );
 }
@@ -36,6 +77,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     alignItems: "center",
+  },
+  scoretext: {
+    color: "red",
   },
   settext: {
     marginTop: "5%",

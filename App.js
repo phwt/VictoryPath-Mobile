@@ -9,10 +9,13 @@ import {
   Image,
   ImagePropTypes,
 } from "react-native";
-
+import "firebase/firestore";
+import { YellowBox } from "react-native";
 import GamesNavigator from "./navigation/navigator";
 import GameScreen from "./screen/gamescreen";
 import firebase from "firebase";
+
+YellowBox.ignoreWarnings(["Setting a timer"]);
 
 var firebaseConfig = {
   apiKey: "AIzaSyAN_QaruL59j_7MhK8rmJoZOMUpVbXraEI",
@@ -25,7 +28,7 @@ var firebaseConfig = {
   measurementId: "G-RXEY1T8PB5",
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
