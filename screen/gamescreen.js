@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   Image,
+  Alert,
 } from "react-native";
 import Login from "./login";
 import Register from "./register";
@@ -32,10 +33,11 @@ const Game = (props) => {
             props.navigation.navigate("GameModeScreen");
           }}
         >
-          <Image
+        <Text style={styles.tutorial}> <Image
             style={{ width: 25, height: 25 }}
             source={require("../assets/playbutton.png")}
-          />
+          /> </Text>
+          
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -44,7 +46,7 @@ const Game = (props) => {
             props.navigation.navigate("TutorialScreen");
           }}
         >
-          <Text style={styles.tutorail}> Tutorial </Text>
+          <Text style={styles.tutorial}> Tutorial </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -53,7 +55,7 @@ const Game = (props) => {
             props.navigation.navigate("ScoreBoardScreen");
           }}
         >
-          <Text style={styles.tutorail}> Score Board </Text>
+          <Text style={styles.tutorial}> Score Board </Text>
         </TouchableOpacity>
         {/* <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
           {(props) => (
@@ -68,7 +70,7 @@ const Game = (props) => {
             props.navigation.navigate("LoginScreen");
           }}
         >
-          <Text style={styles.text}>Login /</Text>
+          <Text style={styles.text}>Login |</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -80,9 +82,11 @@ const Game = (props) => {
           <Text style={styles.text}>Register</Text>
         </TouchableOpacity>
       </View>
+      
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -90,8 +94,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
     alignItems: "center",
   },
-  tutorail: {
+  tutorial: {
     fontSize: 18,
+    
   },
   logo: {
     marginTop: "20%",

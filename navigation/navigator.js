@@ -6,14 +6,41 @@ import Register from "../screen/register";
 import Scoreboard from "../screen/scoreboard";
 import GameMode from "../screen/gamemode";
 import Tutorial from "../screen/tutorial";
+import easy from "../screen/Mode/easy";
+import normal from "../screen/Mode/normal";
+import hard from "../screen/Mode/hard";
+import extreme from "../screen/Mode/extreme";
 
 const GamesNavigator = createStackNavigator({
-  GameScreen: { screen: Game, navigationOptions: { headerShown: false } },
+  GameScreen: { 
+    screen: Game,
+    navigationOptions: { headerShown: false } 
+  },
+
+
   LoginScreen: Login,
   RegisterScreen: Register,
+
   GameModeScreen: {
     screen: GameMode,
     navigationOptions: { headerShown: false },
+    
+  },
+  EasyScreen: {
+    screen: easy,
+    navigationOptions: { headerShown: true}
+  },
+  NormalScreen: {
+    screen: normal,
+    navigationOptions: { headerShown: true}
+  },
+  HardScreen: {
+    screen: hard,
+    navigationOptions: { headerShown: true}
+  },
+  ExtremeScreen: {
+    screen: extreme,
+    navigationOptions: { headerShown: true}
   },
   ScoreBoardScreen: {
     screen: Scoreboard,
