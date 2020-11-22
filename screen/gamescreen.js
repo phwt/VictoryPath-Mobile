@@ -33,11 +33,13 @@ const Game = (props) => {
             props.navigation.navigate("GameModeScreen");
           }}
         >
-        <Text style={styles.tutorial}> <Image
-            style={{ width: 25, height: 25 }}
-            source={require("../assets/playbutton.png")}
-          /> </Text>
-          
+          <Text style={styles.tutorial}>
+            {" "}
+            <Image
+              style={{ width: 25, height: 25 }}
+              source={require("../assets/playbutton.png")}
+            />{" "}
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -82,11 +84,9 @@ const Game = (props) => {
           <Text style={styles.text}>Register</Text>
         </TouchableOpacity>
       </View>
-      
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -96,23 +96,20 @@ const styles = StyleSheet.create({
   },
   tutorial: {
     fontSize: 18,
-    
   },
   logo: {
-    marginTop: "10%",
+    marginTop: "15%",
     height: "10%",
     width: 300,
-    marginBottom: 70,
-  },
-  txt: {
-    color: "red",
-    fontSize: 50,
+    // width: "10%",
+    marginBottom: "5%",
   },
   setpositionbutton: {
     flexDirection: "row",
   },
   setpositionapge: {
     alignItems: "center",
+    justifyContent: "center",
   },
   ttpbt: {
     backgroundColor: "#cccccc",
@@ -131,9 +128,7 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   image: {
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 50,
+    margin: "10%",
     width: 170,
     transform: [{ rotate: "45deg" }],
     height: 170,
@@ -141,8 +136,6 @@ const styles = StyleSheet.create({
   text: {
     color: "#122eff",
     fontSize: 18,
-    alignItems: "center",
-    justifyContent: "center",
   },
   button: {
     top: "20%",
