@@ -116,11 +116,11 @@ const styles = StyleSheet.create({
   },
   ttpbt: {
     backgroundColor: "#cccccc",
-    top: "7%",
+    top: "20%",
     width: 150,
     height: 40,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
     borderRadius: 10,
     borderWidth: 8,
     borderColor: "#cccccc",

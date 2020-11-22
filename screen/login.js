@@ -72,10 +72,10 @@ export default function Login() {
             borderRadius: 30,
             alignItems: "center",
             justifyContent: "space-around",
-            // opacity: 40,
           }}
         >
-          <Text style={{ fontSize: 30, color: "red" }}>Hello!</Text>
+          <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
+          <Text>{email}</Text>
 
           <Button style={styles.button} title="Got it" onPress={toggleModal} />
         </View>
