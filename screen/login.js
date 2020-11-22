@@ -65,9 +65,13 @@ export default function Login() {
           style={{
             flex: 1,
             backgroundColor: "white",
-            margin: 40,
-            borderRadius: 20,
+            marginTop: "40%",
+            marginBottom: "40%",
+            marginLeft: "20%",
+            marginRight: "20%",
+            borderRadius: 30,
             alignItems: "center",
+            justifyContent: "space-around",
             // opacity: 40,
           }}
         >
