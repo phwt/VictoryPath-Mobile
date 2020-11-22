@@ -13,7 +13,7 @@ import {
 import firebase from "firebase";
 
 export default function Scoreboard(hello) {
-  var [scores, setScores] = useState([]);
+  const [scores, setScores] = useState([]);
 
   // const a = firebase.auth().currentUser.email;
   // console.log(a);
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     color: "red",
   },
   settext: {
-    marginTop: "5%",
+    marginTop: "2%",
   },
   text1: {
     marginTop: "30%",

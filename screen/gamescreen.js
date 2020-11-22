@@ -99,11 +99,10 @@ const styles = StyleSheet.create({
     
   },
   logo: {
-    marginTop: "20%",
+    marginTop: "10%",
     height: "10%",
     width: 300,
     marginBottom: 70,
-    marginTop: 90,
   },
   txt: {
     color: "red",

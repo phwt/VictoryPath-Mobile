@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#000",
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
   exitbt: {
     width: 25,
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     width: 100,
   },
   header: {
+    marginTop: "1%",
     color: "#f5f17f",
     fontSize: 50,
     paddingBottom: 20,

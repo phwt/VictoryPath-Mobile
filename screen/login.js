@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   StyleSheet,
@@ -9,19 +9,41 @@ import {
   TextInput,
 } from "react-native";
 import firebase from "firebase";
+import Modal from "react-native-modal";
+// import { Root, Popup } from "popup-ui";
+// import Toast from "./Toast";
 
-import auth from "@react-native-firebase/auth";
+// import auth from "@react-native-firebase/auth";
 
 const checkLogin = (email, password) => {
-  firebase.auth().signInWithEmailAndPassword(email, password);
-  console.log("success");
-  alert("Login Success");
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      alert("Login Success!");
+    })
+    .catch((error) => {
+      if (error.code === "auth/email-already-in-use") {
+        console.log("Email or Password was wrong!");
+        alert("Email or Password was wrong!");
+      }
+
+      if (error.code === "auth/invalid-email") {
+        console.log("That email address is invalid!");
+        alert("That email address is invalid!");
+      }
+      console.error(error);
+    });
 };
 
 export default function Login() {
-  var [email, setEmail] = useState("");
-  var [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isModalVisible, setModalVisible] = useState(false);
 
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Login / ลงทะเบียน</Text>
@@ -36,11 +58,30 @@ export default function Login() {
         onChangeText={(getPassword) => setPassword(getPassword)}
         secureTextEntry={true}
       />
+      <Button style={styles.button} title="Login" onPress={toggleModal} />
+
+      <Modal isVisible={isModalVisible}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "white",
+            margin: 40,
+            borderRadius: 20,
+            alignItems: "center",
+            // opacity: 40,
+          }}
+        >
+          <Text style={{ fontSize: 30, color: "red" }}>Hello!</Text>
+
+          <Button style={styles.button} title="Got it" onPress={toggleModal} />
+        </View>
+      </Modal>
       <TouchableOpacity
         style={styles.button}
         onPress={() => checkLogin(email, password)}
+        title="Login"
       >
-        <Text onPress={() => checkLogin(email, password)}>Login</Text>
+        {/* <Text>Login</Text> */}
       </TouchableOpacity>
     </View>
   );
