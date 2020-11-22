@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   logo: {
-    marginTop: "15%",
+    marginTop: "10%",
     height: "10%",
     width: 300,
     // width: "10%",
@@ -106,6 +106,9 @@ const styles = StyleSheet.create({
   },
   setpositionbutton: {
     flexDirection: "row",
+    // alignSelf: "flex-end",
+    position: "absolute",
+    bottom: "10%",
   },
   setpositionapge: {
     alignItems: "center",
