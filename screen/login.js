@@ -59,24 +59,10 @@ export default function Login() {
         secureTextEntry={true}
       />
       <Button style={styles.button} title="Login" onPress={toggleModal} />
-
       <Modal isVisible={isModalVisible}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: "white",
-            marginTop: "40%",
-            marginBottom: "40%",
-            marginLeft: "20%",
-            marginRight: "20%",
-            borderRadius: 30,
-            alignItems: "center",
-            justifyContent: "space-around",
-          }}
-        >
+        <View style={styles.loginbt}>
           <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
           <Text>{email}</Text>
-
           <Button style={styles.button} title="Got it" onPress={toggleModal} />
         </View>
       </Modal>
@@ -96,8 +82,18 @@ const styles = StyleSheet.create({
     margin: 40,
     alignSelf: "stretch",
   },
+  loginbt: {
+    flex: 1,
+    backgroundColor: "white",
+    marginTop: "40%",
+    marginBottom: "40%",
+    marginLeft: "20%",
+    marginRight: "20%",
+    borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
   button: {
-    // color: '#FFF',
     backgroundColor: "#0059ff",
     fontSize: 20,
     marginBottom: 100,

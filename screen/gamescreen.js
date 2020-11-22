@@ -34,11 +34,10 @@ const Game = (props) => {
           }}
         >
           <Text style={styles.tutorial}>
-            {" "}
             <Image
               style={{ width: 25, height: 25 }}
               source={require("../assets/playbutton.png")}
-            />{" "}
+            />
           </Text>
         </TouchableOpacity>
 
@@ -101,12 +100,10 @@ const styles = StyleSheet.create({
     marginTop: "10%",
     height: "10%",
     width: 300,
-    // width: "10%",
     marginBottom: "5%",
   },
   setpositionbutton: {
     flexDirection: "row",
-    // alignSelf: "flex-end",
     position: "absolute",
     bottom: "10%",
   },
@@ -120,7 +117,6 @@ const styles = StyleSheet.create({
     width: 150,
     height: 40,
     alignItems: "center",
-    // justifyContent: "center",
     borderRadius: 10,
     borderWidth: 8,
     borderColor: "#cccccc",
