@@ -13,8 +13,6 @@ import GameScreen from "./gamescreen";
 
 export default function GameMode(props) {
   return (
-    
-
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() => {
@@ -34,35 +32,43 @@ export default function GameMode(props) {
       <Image style={styles.image} source={require("../assets/boomboom.gif")} />
 
       {/* ปุ่มเซ็ตที่1 แถวบน */}
-      <View style={styles.setbt1}> 
-      <TouchableOpacity style={styles.easybt}
-        onPress={() => {
-          props.navigation.navigate("EasyScreen");
-        }}>
-        <Text style={styles.text}> Easy </Text>
-      </TouchableOpacity>
+      <View style={styles.setbt1}>
+        <TouchableOpacity
+          style={styles.easybt}
+          onPress={() => {
+            props.navigation.navigate("EasyScreen");
+          }}
+        >
+          <Text style={styles.text}> Easy </Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity style={styles.normalbt}
-        onPress={() => {
-          props.navigation.navigate("NormalScreen");
-        }}>
-        <Text style={styles.text}>Normal</Text>
+        <TouchableOpacity
+          style={styles.normalbt}
+          onPress={() => {
+            props.navigation.navigate("NormalScreen");
+          }}
+        >
+          <Text style={styles.text}>Normal</Text>
         </TouchableOpacity>
       </View>
 
       {/* ปุ่มเซ็ตที่2 แถวล่าง */}
       <View style={styles.setbt2}>
-        <TouchableOpacity style={styles.hardbt}
+        <TouchableOpacity
+          style={styles.hardbt}
           onPress={() => {
             props.navigation.navigate("HardScreen");
-          }}>
+          }}
+        >
           <Text style={styles.text}>Hard</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.extremebt}
+        <TouchableOpacity
+          style={styles.extremebt}
           onPress={() => {
             props.navigation.navigate("ExtremeScreen");
-          }}>
+          }}
+        >
           <Text style={styles.text}>Extreme</Text>
         </TouchableOpacity>
       </View>
