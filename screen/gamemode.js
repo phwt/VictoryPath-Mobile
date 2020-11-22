@@ -22,13 +22,7 @@ export default function GameMode(props) {
         <Image style={styles.exitbt} source={require("../assets/arrow.png")} />
       </TouchableOpacity>
 
-      <TouchableOpacity>
-        <Image
-          style={styles.removelogo}
-          source={require("../assets/remove.png")}
-        />
-      </TouchableOpacity>
-      <Text style={styles.header}>VictoryPath</Text>
+      <Text style={styles.header}>Victory Path</Text>
       <Image style={styles.image} source={require("../assets/boomboom.gif")} />
 
       {/* ปุ่มเซ็ตที่1 แถวบน */}
@@ -103,9 +97,13 @@ const styles = StyleSheet.create({
   },
   setbt1: {
     flexDirection: "row",
+    position: "absolute",
+    bottom: "16%",
   },
   setbt2: {
     flexDirection: "row",
+    position: "absolute",
+    bottom: "8%",
   },
   image: {
     alignItems: "center",
