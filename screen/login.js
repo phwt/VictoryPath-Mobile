@@ -35,18 +35,18 @@ const checkLogin = (email, password) => {
       }
       console.error(error);
     });
-  try {
-    setSession({
-      isLoggedIn: true,
-      currentUser: user,
-    });
-  } catch (error) {
-    setSession({
-      isLoggedIn: false,
-      currentUser: null,
-      errorMessage: error.errorMessage,
-    });
-  }
+  // try {
+  //   setSession({
+  //     isLoggedIn: true,
+  //     currentUser: user,
+  //   });
+  // } catch (error) {
+  //   setSession({
+  //     isLoggedIn: false,
+  //     currentUser: null,
+  //     errorMessage: error.errorMessage,
+  //   });
+  // }
 };
 
 export default function Login(props) {
