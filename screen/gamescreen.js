@@ -13,7 +13,7 @@ import {
 import Login from "./login";
 import Register from "./register";
 import ScoreScreen from "./scoreboard";
-// import { Spring } from "react-spring/renderprops";
+import checkLogin from "./login";
 
 const Game = (props) => {
   return (

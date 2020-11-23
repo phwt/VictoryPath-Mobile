@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "80%",
-    height: "40%",
-    margin: 40,
+    height: "50%",
+    // margin: 40,
   },
   easybt: {
     margin: 20,

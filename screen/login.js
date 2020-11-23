@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import firebase from "firebase";
 import Modal from "react-native-modal";
+import LoginForm from "./loginform";
 // import { Root, Popup } from "popup-ui";
 // import Toast from "./Toast";
 
@@ -70,9 +71,8 @@ export default function Login() {
         style={styles.button}
         onPress={() => checkLogin(email, password)}
         title="Login"
-      >
-        {/* <Text>Login</Text> */}
-      </TouchableOpacity>
+      ></TouchableOpacity>
+      <LoginForm />
     </View>
   );
 }
