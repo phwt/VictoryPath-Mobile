@@ -54,7 +54,12 @@ export default function Register() {
         style={styles.button}
         onPress={() => signUp(email, password)}
       >
-        <Text onPress={() => signUp(email, password)}>Sign up</Text>
+        <Text
+          onPress={() => signUp(email, password)}
+          style={{ color: "white" }}
+        >
+          Sign up
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -66,14 +71,15 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
   },
   button: {
-    backgroundColor: "#0059ff",
-    fontSize: 20,
+    backgroundColor: "#0080ff",
+    fontSize: 30,
     marginBottom: 100,
+    height: 35,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 10,
-    borderWidth: 5,
-    borderColor: "#0059ff",
+    // borderRadius: 10,
+    // borderWidth: 5,
+    // borderColor: "#0059ff",
   },
   header: {
     color: "#0059ff",

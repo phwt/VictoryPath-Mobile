@@ -11,48 +11,61 @@ import {
 } from "react-native";
 import firebase from "firebase";
 import Modal from "react-native-modal";
+// import GameScreen from "./screen/gamescreen";
 // import { Root, Popup } from "popup-ui";
 // import Toast from "./Toast";
 
 // import auth from "@react-native-firebase/auth";
 
-const checkLogin = (email, password) => {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(() => {
-      alert("Login Success!");
-    })
-    .catch((error) => {
-      if (error.code === "auth/email-already-in-use") {
-        console.log("Email or Password was wrong!");
-        alert("Email or Password was wrong!");
-      }
+// const checkLogin = (email, password) => {
+//   firebase
+//     .auth()
+//     .signInWithEmailAndPassword(email, password)
+//     .then(() => {
+//       // alert("Login Success!");
+//       navaigation.navigate("GameScreen");
+//     })
+//     .catch((error) => {
+//       if (error.code === "auth/email-already-in-use") {
+//         // console.log("Email or Password was wrong!");
+//         alert("Email or Password was wrong!");
+//       }
 
-      if (error.code === "auth/invalid-email") {
-        console.log("That email address is invalid!");
-        alert("That email address is invalid!");
-      }
-      console.error(error);
-    });
-  // try {
-  //   setSession({
-  //     isLoggedIn: true,
-  //     currentUser: user,
-  //   });
-  // } catch (error) {
-  //   setSession({
-  //     isLoggedIn: false,
-  //     currentUser: null,
-  //     errorMessage: error.errorMessage,
-  //   });
-  // }
-};
+//       if (error.code === "auth/invalid-email") {
+//         // console.log("That email address is invalid!");
+//         alert("That email address is invalid!");
+//       }
+//       console.error(error);
+//     });
+// };
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
+  const checkLogin = (email, password) => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        // alert("Login Success!");
+        props.navigation.navigate("GameScreen");
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          // console.log("Email or Password was wrong!");
+          alert("Email or Password was wrong!");
+          props.navigation.replace("LoginScreen");
+        }
+
+        if (error.code === "auth/invalid-email") {
+          // console.log("That email address is invalid!");
+          alert("That email address is invalid!");
+          props.navigation.replace("LoginScreen");
+        }
+        console.error(error);
+      });
+  };
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -60,12 +73,13 @@ export default function Login(props) {
   const switchToSignUp = () => {
     props.navigation.replace("RegisterScreen");
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Login / ลงทะเบียน</Text>
       <TextInput
         style={styles.textinput}
-        placeholder="Your name [ Your ID ]"
+        placeholder="Your email   [ ex.123@gmail.com ]"
         onChangeText={(getEmail) => setEmail(getEmail)}
       />
       <TextInput
@@ -80,18 +94,28 @@ export default function Login(props) {
         <View style={styles.loginbt}>
           <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
           <Text>{email}</Text>
-          <Button
-            style={styles.button}
-            title="Ok I Got it"
-            onPress={toggleModal}
+          <View style={styles.buttonInModal}>
+            <Button
+              style={{ marginLeft: 20 }}
+              title="Let go"
+              type="clear"
+              onPress={() => checkLogin(email, password)}
+            />
+            <Button onPress={toggleModal} title="cancel" />
+          </View>
+          {/* <Button
+            style={styles.button2}
+            title="Let go"
+            onPress={() => checkLogin(email, password)}
           />
+          <Button style={styles.button2} onPress={toggleModal} title="cancel" /> */}
         </View>
       </Modal>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.button}
         onPress={() => checkLogin(email, password)}
         title="Login"
-      ></TouchableOpacity>
+      ></TouchableOpacity> */}
 
       <TouchableOpacity onPress={switchToSignUp} style={styles.gotoregist}>
         <Text style={styles.gotoregist}>Doesn't have any account ? </Text>
@@ -107,11 +131,11 @@ const styles = StyleSheet.create({
   },
   gotoregist: {
     left: "23%",
-    bottom: "20%",
-    color: "red",
+    top: "3%",
+    color: "blue",
   },
   loginbt: {
-    flex: 1,
+    flex: 2,
     backgroundColor: "white",
     marginTop: "40%",
     marginBottom: "40%",
@@ -121,12 +145,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
   },
+  buttonInModal: {
+    flexDirection: "row",
+  },
   button: {
     backgroundColor: "#0059ff",
     fontSize: 20,
     marginBottom: 100,
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     borderRadius: 10,
     borderWidth: 5,
     borderColor: "#0059ff",

@@ -36,7 +36,7 @@ const Game = (props) => {
       <View style={styles.setpositionapge}>
         <Image style={styles.logo} source={require("../assets/logo.jpg")} />
         <Image
-          style={styles.image}
+          style={styles.gif}
           source={{
             uri:
               "https://video-public.canva.com/VADn8UbzNr4/videos/8b30290d4b.gif",
@@ -48,12 +48,12 @@ const Game = (props) => {
             props.navigation.navigate("GameModeScreen");
           }}
         >
-          <Text style={styles.tutorial}>
-            <Image
-              style={{ width: 25, height: 25 }}
-              source={require("../assets/playbutton.png")}
-            />
-          </Text>
+          {/* <Text style={styles.tutorial}> */}
+          <Image
+            style={{ width: 25, height: 25 }}
+            source={require("../assets/playbutton.png")}
+          />
+          {/* </Text> */}
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -105,12 +105,13 @@ const styles = StyleSheet.create({
   },
   tutorial: {
     fontSize: 18,
+    // top: "10%",
   },
   logo: {
     marginTop: "10%",
     height: "10%",
     width: 300,
-    marginBottom: "5%",
+    marginBottom: "10%",
   },
   setpositionbutton: {
     flexDirection: "row",
@@ -123,20 +124,17 @@ const styles = StyleSheet.create({
   },
   ttpbt: {
     backgroundColor: "#cccccc",
-    top: "20%",
+    top: "15%",
     width: 150,
     height: 40,
     alignItems: "center",
+    justifyContent: "center",
     borderRadius: 10,
     borderWidth: 8,
     borderColor: "#cccccc",
     marginBottom: 10,
   },
-  ttptxt: {
-    fontSize: 20,
-    color: "grey",
-  },
-  image: {
+  gif: {
     margin: "10%",
     width: 170,
     transform: [{ rotate: "45deg" }],
