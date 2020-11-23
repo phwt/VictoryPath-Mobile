@@ -95,13 +95,22 @@ export default function Login(props) {
           <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
           <Text>{email}</Text>
           <View style={styles.buttonInModal}>
-            <Button
+            <TouchableOpacity
+              title="Let go "
+              onPress={() => checkLogin(email, password)}
+            >
+              <Text>Login </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={toggleModal} title="cancel">
+              <Text> Cancel</Text>
+            </TouchableOpacity>
+            {/* <Button
               style={{ marginLeft: 20 }}
               title="Let go"
               type="clear"
               onPress={() => checkLogin(email, password)}
-            />
-            <Button onPress={toggleModal} title="cancel" />
+            /> */}
+            {/* <Button onPress={toggleModal} title="cancel" /> */}
           </View>
           {/* <Button
             style={styles.button2}
@@ -147,6 +156,9 @@ const styles = StyleSheet.create({
   },
   buttonInModal: {
     flexDirection: "row",
+    // flex: 1,
+    // marginRight: 5,
+    justifyContent: "space-between",
   },
   button: {
     backgroundColor: "#0059ff",
