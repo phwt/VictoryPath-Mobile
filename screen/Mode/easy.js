@@ -5,8 +5,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Easy(props) {
     
+    var colors = ["#F90A03", "#0323F9", "#1AF903", "#E6FC00"];
+    var randColor = colors[Math.floor(Math.random() * colors.length)];
+    console.log(randColor);
+    
+
     let rows = []
     let nums = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]
+
 
     for (let i = 0; i < 4; i++) {
       let row = []
@@ -21,6 +27,9 @@ export default function Easy(props) {
       rows.push(<View style={styles.gridlayout}>{row}</View>)
     }
 
+
+
+    
     
 
     return (
@@ -49,11 +58,7 @@ export default function Easy(props) {
     );
 }
 
-function random(){
-    var colors = ["red","blue","green","yellow"];
-    var randColor = colors[Math.floor(Math.random() * colors.length)];
-    console.log(randColor)
-}
+
     
 
 const styles = StyleSheet.create({
