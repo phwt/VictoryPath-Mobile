@@ -92,7 +92,7 @@ export default function Login(props) {
 
       <Modal isVisible={isModalVisible}>
         <View style={styles.loginbt}>
-          <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
+          <Text style={{ fontSize: 30, color: "red" }}>Confirm Login!</Text>
           <Text>{email}</Text>
           <View style={styles.buttonInModal}>
             {/* <TouchableOpacity onPress={() => checkLogin(email, password)}>
@@ -102,7 +102,7 @@ export default function Login(props) {
               <Text> Cancel</Text>
             </TouchableOpacity> */}
             <Button
-              title="Let go"
+              title="Confirm"
               onPress={() => checkLogin(email, password)}
             />
             <Button

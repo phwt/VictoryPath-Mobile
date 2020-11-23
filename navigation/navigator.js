@@ -20,7 +20,6 @@ const GamesNavigator = createStackNavigator({
   checkLoginScreen: checkLogin,
   LoginScreen: Login,
   RegisterScreen: Register,
-
   GameModeScreen: {
     screen: GameMode,
     navigationOptions: { headerShown: false },
