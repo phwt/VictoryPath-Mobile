@@ -95,22 +95,21 @@ export default function Login(props) {
           <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
           <Text>{email}</Text>
           <View style={styles.buttonInModal}>
-            <TouchableOpacity
-              title="Let go "
-              onPress={() => checkLogin(email, password)}
-            >
+            {/* <TouchableOpacity onPress={() => checkLogin(email, password)}>
               <Text>Login </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={toggleModal} title="cancel">
+            <TouchableOpacity onPress={toggleModal}>
               <Text> Cancel</Text>
-            </TouchableOpacity>
-            {/* <Button
-              style={{ marginLeft: 20 }}
+            </TouchableOpacity> */}
+            <Button
               title="Let go"
-              type="clear"
               onPress={() => checkLogin(email, password)}
-            /> */}
-            {/* <Button onPress={toggleModal} title="cancel" /> */}
+            />
+            <Button
+              style={styles.button2}
+              onPress={toggleModal}
+              title="cancel"
+            />
           </View>
           {/* <Button
             style={styles.button2}
@@ -143,6 +142,9 @@ const styles = StyleSheet.create({
     top: "3%",
     color: "blue",
   },
+  button2: {
+    backgroundColor: "#e8e8e8",
+  },
   loginbt: {
     flex: 2,
     backgroundColor: "white",
@@ -156,9 +158,8 @@ const styles = StyleSheet.create({
   },
   buttonInModal: {
     flexDirection: "row",
-    // flex: 1,
-    // marginRight: 5,
-    justifyContent: "space-between",
+    justifyContent: "space-around",
+    width: "80%",
   },
   button: {
     backgroundColor: "#0059ff",
