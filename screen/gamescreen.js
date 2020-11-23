@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Animated,
   Button,
@@ -14,8 +14,23 @@ import Login from "./login";
 import Register from "./register";
 import ScoreScreen from "./scoreboard";
 import checkLogin from "./login";
+import auth from "firebase";
 
 const Game = (props) => {
+  // useEffect(() => {
+  //   const handleAuth = auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       setSession({
+  //         isLoggedIn: true,
+  //         currentUser: user,
+  //         errorMessage: null,
+  //       });
+  //     }
+  //   });
+  //   return () => {
+  //     handleAuth();
+  //   };
+  // }, []);
   return (
     <View style={styles.container}>
       <View style={styles.setpositionapge}>
@@ -58,11 +73,6 @@ const Game = (props) => {
         >
           <Text style={styles.tutorial}> Score Board </Text>
         </TouchableOpacity>
-        {/* <Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-          {(props) => (
-            
-          )} */}
-        {/* </Spring> */}
       </View>
       <View style={styles.setpositionbutton}>
         <TouchableOpacity

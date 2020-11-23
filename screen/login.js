@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  MyText,
 } from "react-native";
 import firebase from "firebase";
 import Modal from "react-native-modal";
-import LoginForm from "./loginform";
 // import { Root, Popup } from "popup-ui";
 // import Toast from "./Toast";
 
@@ -35,15 +35,30 @@ const checkLogin = (email, password) => {
       }
       console.error(error);
     });
+  try {
+    setSession({
+      isLoggedIn: true,
+      currentUser: user,
+    });
+  } catch (error) {
+    setSession({
+      isLoggedIn: false,
+      currentUser: null,
+      errorMessage: error.errorMessage,
+    });
+  }
 };
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isModalVisible, setModalVisible] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
+  };
+  const switchToSignUp = () => {
+    props.navigation.replace("RegisterScreen");
   };
   return (
     <View style={styles.container}>
@@ -60,11 +75,16 @@ export default function Login() {
         secureTextEntry={true}
       />
       <Button style={styles.button} title="Login" onPress={toggleModal} />
+
       <Modal isVisible={isModalVisible}>
         <View style={styles.loginbt}>
           <Text style={{ fontSize: 30, color: "red" }}>Welcome!</Text>
           <Text>{email}</Text>
-          <Button style={styles.button} title="Got it" onPress={toggleModal} />
+          <Button
+            style={styles.button}
+            title="Ok I Got it"
+            onPress={toggleModal}
+          />
         </View>
       </Modal>
       <TouchableOpacity
@@ -72,7 +92,10 @@ export default function Login() {
         onPress={() => checkLogin(email, password)}
         title="Login"
       ></TouchableOpacity>
-      <LoginForm />
+
+      <TouchableOpacity onPress={switchToSignUp} style={styles.gotoregist}>
+        <Text style={styles.gotoregist}>Doesn't have any account ? </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -81,6 +104,11 @@ const styles = StyleSheet.create({
   container: {
     margin: 40,
     alignSelf: "stretch",
+  },
+  gotoregist: {
+    left: "23%",
+    bottom: "20%",
+    color: "red",
   },
   loginbt: {
     flex: 1,
