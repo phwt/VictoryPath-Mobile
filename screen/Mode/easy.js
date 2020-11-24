@@ -31,6 +31,7 @@ function showTime(pos, pos2, t) {
     randomcolor = allcolor[Math.floor(Math.random() * allcolor.length)];
     $("#box" + pos + pos2).css("background-color", randomcolor);
   }, timerandom * t);
+  // var score = 0
 }
 
 export default function Easy(props) {
@@ -45,22 +46,24 @@ export default function Easy(props) {
   console.log(ranNum);
 
   // var ranNum = nums[0][Math.floor(Math.random() * nums.length)];
-  var answer = 1;
+  // var answer = 1;
 
   function buttonPress(num) {
     console.log(num);
   }
+
   for (let i = 0; i < 4; i++) {
     var row = [];
     for (let j = 0; j < 4; j++) {
       row.push(
         <TouchableOpacity
-          key={nums[i][j]}
+          // key={nums[i][j]}
           style={randomCol(randColor)}
           onPress={() => buttonPress(nums[i][j])} // เอาไว้เก็บค่าว่ากดปุ่มไหน
         ></TouchableOpacity>
       );
     }
+
     rows.push(<View style={styles.gridlayout}>{row}</View>);
   }
   // เช็ค ตำแหน่ง array
@@ -129,13 +132,11 @@ const styles = StyleSheet.create({
   btnred: {
     margin: 25,
     borderRadius: 15,
-
     backgroundColor: "red",
     alignItems: "center",
     height: 50,
     width: 120,
   },
-
   text: {
     fontSize: 18,
     color: "white",

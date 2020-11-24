@@ -17,20 +17,6 @@ import checkLogin from "./login";
 import auth from "firebase";
 
 const Game = (props) => {
-  // useEffect(() => {
-  //   const handleAuth = auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       setSession({
-  //         isLoggedIn: true,
-  //         currentUser: user,
-  //         errorMessage: null,
-  //       });
-  //     }
-  //   });
-  //   return () => {
-  //     handleAuth();
-  //   };
-  // }, []);
   return (
     <View style={styles.container}>
       <View style={styles.setpositionapge}>
@@ -48,12 +34,10 @@ const Game = (props) => {
             props.navigation.navigate("GameModeScreen");
           }}
         >
-          {/* <Text style={styles.tutorial}> */}
           <Image
             style={{ width: 25, height: 25 }}
             source={require("../assets/playbutton.png")}
           />
-          {/* </Text> */}
         </TouchableOpacity>
 
         <TouchableOpacity
