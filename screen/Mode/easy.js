@@ -45,17 +45,20 @@ export default function Easy(props) {
   console.log(ranNum);
 
   // var ranNum = nums[0][Math.floor(Math.random() * nums.length)];
+  var answer = 1;
 
+  function buttonPress(num) {
+    console.log(num);
+  }
   for (let i = 0; i < 4; i++) {
     var row = [];
     for (let j = 0; j < 4; j++) {
       row.push(
         <TouchableOpacity
+          key={nums[i][j]}
           style={randomCol(randColor)}
-          // onPress={() => this.buttonPress(nums[i][j])}
-        >
-          {/* <Text style={{ color: "black", fontSize: 40 }}>{nums[i][j]}</Text> */}
-        </TouchableOpacity>
+          onPress={() => buttonPress(nums[i][j])} // เอาไว้เก็บค่าว่ากดปุ่มไหน
+        ></TouchableOpacity>
       );
     }
     rows.push(<View style={styles.gridlayout}>{row}</View>);
@@ -66,11 +69,7 @@ export default function Easy(props) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Easy Mode</Text>
-      <View style={styles.frame}>
-        {/* <Text>{row.map((item) => item)}</Text> */}
-        {/* {row.map((item) => item)} */}
-        {rows}
-      </View>
+      <View style={styles.frame}>{rows}</View>
       <View style={styles.btnrow}>
         <TouchableOpacity
           style={styles.btngreen}
