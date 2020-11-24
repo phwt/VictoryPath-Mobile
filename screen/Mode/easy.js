@@ -55,6 +55,7 @@ export default function Easy(props) {
   var yourAns = [];
   var yourScore = 0;
   console.log("Now your score is: " + yourScore)
+  
   function buttonPress(num) {
     console.log("you click on " + num);
     yourAns.push(num);
