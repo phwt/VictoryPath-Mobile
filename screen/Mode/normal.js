@@ -4,37 +4,48 @@ import { View, Button, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 export default function Normal(props) {
     const [activeColor, setActiveColor] = useState("#40FFFF");
-    const [disableColor, setDisableColor] = useState("#7F8080");
-    const [showPath, setShowPath] = useState(true);
 
     //Customize Button
-    const PathButton = ({onPress, backgroundColor }) => (<TouchableOpacity onPress={onPress} style={{margin: "0.5%",
+    const PathButton = ({onPress}) => (<TouchableOpacity onPress={onPress} style={{margin: "0.5%",
     width: 65,
     height: 65,
     backgroundColor: activeColor,
     borderRadius: 30}}/>);
     const WrongButton = ({onPress}) => (<TouchableOpacity onPress={onPress} style={styles.grid}/>);
 
-    var answer = []; //คำตอบของผู้เล่น
-    var timedis = 3000; //เวลาที่จะแสดงสีค้างไว้
-    var timerandom = 500; //เวลาในการแสดงสีแต่ละช่อง #ยิ่งน้อยยิ่งเร็ว
+    var timedisplay = 3000; //เวลาที่จะแสดงสีค้างไว้
     var size = 5; //ไซส์ของตาราง
-    var score = 0;
-
-    function addToAnswer(number){
-        answer.push(number);
-    }
-
+    var score = 0; //คะแนน
+    var click = 0; //กดไปกี่ครั้ง
     var rows = [];
+    var result = [];
     var buttonValue = [[1,2,3,4,5],
                         [6,7,8,9,10],
                         [11,12,13,14,15],
                         [16,17,18,19,20],
                         [21,22,23,24,25]];
 
-    var result = [];
-    var temp = 100;
-    // setTimeout(function() {
+    //เช็คคำตอบ
+    function addToAnswer(number){
+        console.log(number);
+        if (number == result[click]){
+            click += 1;
+            console.log(number+" Nice bro!!!");
+            if (click == size){
+                score += 1;
+                console.log("***** Now your score is: " +'"'+ yourScore + '"'+ " ******");
+                click = 0;
+                createGrid();
+            }
+        }else{
+            console.log("Defeat!!!");
+            props.navigation.navigate("GameModeScreen");
+        }
+    }
+
+    function createGrid(){
+        //สุ่มตัวเลข ตำแหน่ง Path
+        var temp = 100;
         for (let i = 0, j = size - 1; i < size; i++, j--) {
             if (temp != 100) {
                 var combo = Math.floor(Math.random() * 5);
@@ -51,33 +62,32 @@ export default function Normal(props) {
             } else
                 pos = Math.floor(Math.random() * size);
             temp = pos;
-            // timeOut(j, pos, i);
-            // console.log(j + '' + pos);
             result.push(buttonValue[j][pos]);
         }
         console.log("result: "+result);
-    // }, 100);
 
-
-    for (let i = 0; i < size; i++) {
-      let row = [];
-      for (let j = 0; j < size; j++) {
-            if(result.includes(buttonValue[i][j])){
-                row.push(<PathButton onPress={()=>addToAnswer(buttonValue[i][j])}/>);
-            }else{
-                row.push(<WrongButton onPress={()=>addToAnswer(buttonValue[i][j])}/>);
-            } 
+        for (let i = 0; i < size; i++) {
+            let row = [];
+            for (let j = 0; j < size; j++) {
+                if(result.includes(buttonValue[i][j])){
+                    row.push(<PathButton onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                }else{
+                    row.push(<WrongButton onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                  } 
+            }
+            rows.push(<View style={styles.gridlayout}>{row}</View>);
         }
-        rows.push(<View style={styles.gridlayout}>{row}</View>);
+        setTimeout(function(){
+            setActiveColor("#7F8080");//เปลี่ยน Path กลับเป็นสีเทา
+        }, timedisplay);
     }
-
-    setTimeout(function(){
-        setActiveColor("#7F8080");
-    }, 3000);
     
+
+    createGrid();
     return (
         <View style={styles.container}>
             <Text style={styles.header}>Normal Mode</Text>
+            <Text style={styles.header}>Score: {score}</Text>
             <View style={styles.frame}>
                 {rows}
             </View>
@@ -92,9 +102,6 @@ export default function Normal(props) {
         </View>
     );
 }
-
-
-    
 
 const styles = StyleSheet.create({
     container: {
