@@ -73,7 +73,7 @@ export default function Scoreboard(hello) {
             );
           })}
         </View> */}
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row", marginBottom: 20 }}>
           <Text
             style={{
               color: "white",

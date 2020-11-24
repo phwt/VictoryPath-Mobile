@@ -56,15 +56,6 @@ export default function GameMode(props) {
         >
           <Text style={styles.text}>Hard</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.extremebt}
-          onPress={() => {
-            props.navigation.navigate("ExtremeScreen");
-          }}
-        >
-          <Text style={styles.text}>Extreme</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );

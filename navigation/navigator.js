@@ -36,10 +36,6 @@ const GamesNavigator = createStackNavigator({
     screen: hard,
     navigationOptions: { headerShown: true },
   },
-  ExtremeScreen: {
-    screen: extreme,
-    navigationOptions: { headerShown: true },
-  },
   ScoreBoardScreen: {
     screen: Scoreboard,
     navigationOptions: { headerShown: false },
