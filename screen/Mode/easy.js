@@ -2,10 +2,12 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+
+console.log("----------------------------------------------");
 // เก็บค่าสี
 var colors = ["#F90A03", "#0323F9", "#1AF903", "#E6FC00", "#EE00FC", "#7B06B1"];
 var randColor = colors[Math.floor(Math.random() * colors.length)];
-console.log(randColor);
+
 
 // สไตล์สุ่มสี
 function randomCol(randColor) {
@@ -18,21 +20,6 @@ function randomCol(randColor) {
   };
 }
 
-function showTime(pos, pos2, t) {
-  setShowtime(function () {
-    allcolor = [
-      "#F90A03",
-      "#0323F9",
-      "#1AF903",
-      "#E6FC00",
-      "#EE00FC",
-      "#7B06B1",
-    ];
-    randomcolor = allcolor[Math.floor(Math.random() * allcolor.length)];
-    $("#box" + pos + pos2).css("background-color", randomcolor);
-  }, timerandom * t);
-  // var score = 0
-}
 
 export default function Easy(props) {
   var rows = [];
@@ -43,31 +30,85 @@ export default function Easy(props) {
     [13, 14, 15, 16],
   ];
   var ranNum = nums[Math.floor(Math.random() * nums.length)];
-  console.log(ranNum);
+//   console.log(ranNum);
 
   // var ranNum = nums[0][Math.floor(Math.random() * nums.length)];
   // var answer = 1;
+  var keepAnswer = [];
+    function randomPostion(){
+        for(let p = nums.length -1 ; p >= 0 ; p--){
+            let keep =  nums[p][Math.floor(Math.random() * nums.length)]; 
+            // เก็บคำตอบไว้ใน array สำหรับนำมาเช็ค
+            keepAnswer.push(keep);
+            console.log("random position is " + keep);
+            
+            }
+        
+        console.log("correct answer is " + keepAnswer);
+    }
 
+    randomPostion();
+    // log คำตอบ
+    console.log(keepAnswer);
+
+// เก็บคำตอบที่เราคลิ๊ก เพื่อเอาไว้นำมาเช็คกับคำตอบที่ถูกต้อง
+  var yourAns = [];
+  var yourScore = 0;
+  console.log("Now your score is: " + yourScore)
   function buttonPress(num) {
-    console.log(num);
+    console.log("you click on " + num);
+    yourAns.push(num);
+    
+    if(yourAns.length % nums.length == 0){
+        console.log("OK, "+yourAns.length);
+        console.log("your answer is "+ yourAns)
+        if(arraysEqual(yourAns, keepAnswer)){
+            console.log("you correct");
+            yourScore++;
+            console.log("***** Now your score is: " +'"'+ yourScore + '"'+ " ******")
+            keepAnswer = [];
+            yourAns = [];
+            randomPostion();
+            
+        }
+        else{
+            console.log("You are Failed");
+            alert("You are Failed! Your Score is: " + yourScore);
+            yourScore = 0;
+            keepAnswer = [];
+            yourAns = [];
+            
+        }
+    }
   }
+
+  function arraysEqual(a1,a2) {
+    /* WARNING: arrays must not contain {objects} or behavior may be undefined */
+    return JSON.stringify(a1)==JSON.stringify(a2);
+}
+
 
   for (let i = 0; i < 4; i++) {
     var row = [];
     for (let j = 0; j < 4; j++) {
       row.push(
         <TouchableOpacity
-          // key={nums[i][j]}
-          style={randomCol(randColor)}
-          onPress={() => buttonPress(nums[i][j])} // เอาไว้เก็บค่าว่ากดปุ่มไหน
-        ></TouchableOpacity>
+            // key={nums[i][j]}
+            // style={randomCol(randColor)}
+            // onPress={() => buttonPress(nums[i][j])} // เอาไว้เก็บค่าว่ากดปุ่มไหน
+            style={styles.grid}
+            onPress={() => buttonPress(nums[i][j])}
+        >
+        <Text style={{color:"black", fontSize:40}}>{nums[i][j]}</Text>
+        </TouchableOpacity>
       );
     }
-
     rows.push(<View style={styles.gridlayout}>{row}</View>);
   }
-  // เช็ค ตำแหน่ง array
-  console.log(nums[0][1]);
+
+    
+    console.log("please answer the correct position")
+    
 
   return (
     <View style={styles.container}>
@@ -116,7 +157,7 @@ const styles = StyleSheet.create({
     margin: "0.5%",
     width: 75,
     height: 75,
-    backgroundColor: "red",
+    backgroundColor: "#F8F9F9",
     borderRadius: 30,
     // '#F8F9F9'
   },
