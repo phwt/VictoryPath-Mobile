@@ -11,33 +11,6 @@ import {
 } from "react-native";
 import firebase from "firebase";
 import Modal from "react-native-modal";
-// import GameScreen from "./screen/gamescreen";
-// import { Root, Popup } from "popup-ui";
-// import Toast from "./Toast";
-
-// import auth from "@react-native-firebase/auth";
-
-// const checkLogin = (email, password) => {
-//   firebase
-//     .auth()
-//     .signInWithEmailAndPassword(email, password)
-//     .then(() => {
-//       // alert("Login Success!");
-//       navaigation.navigate("GameScreen");
-//     })
-//     .catch((error) => {
-//       if (error.code === "auth/email-already-in-use") {
-//         // console.log("Email or Password was wrong!");
-//         alert("Email or Password was wrong!");
-//       }
-
-//       if (error.code === "auth/invalid-email") {
-//         // console.log("That email address is invalid!");
-//         alert("That email address is invalid!");
-//       }
-//       console.error(error);
-//     });
-// };
 
 export default function Login(props) {
   const [email, setEmail] = useState("");

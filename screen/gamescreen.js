@@ -10,11 +10,8 @@ import {
   Image,
   Alert,
 } from "react-native";
-import Login from "./login";
-import Register from "./register";
-import ScoreScreen from "./scoreboard";
-import checkLogin from "./login";
-import auth from "firebase";
+// import email from "./login";
+// import firebase from "firebase";
 
 const Game = (props) => {
   return (
@@ -39,7 +36,6 @@ const Game = (props) => {
             source={require("../assets/playbutton.png")}
           />
         </TouchableOpacity>
-
         <TouchableOpacity
           style={styles.ttpbt}
           onPress={() => {

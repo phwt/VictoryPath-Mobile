@@ -77,41 +77,43 @@ export default function Tutorial(props) {
       </Text>
       <ScrollView>
         <View style={{ marginLeft: "5%", marginTop: "5%" }}>
-          <Text style={{ color: "red", fontSize: 18 }}>
-            เลือกโหมด ซึ่งมีทั้งหมด 4 โหมด โดยแต่ละโหมดจะมีความยากต่างกันไป
-          </Text>
           <Text
             style={{
-              color: "white",
+              color: "red",
               fontSize: 18,
+              margin: 15,
+              fontWeight: "bold",
             }}
           >
+            1. เลือกโหมด ซึ่งมีทั้งหมด 4 โหมด โดยแต่ละโหมดจะมีความยากต่างกันไป
+          </Text>
+          <Text style={styles.setpositiontextinbox}>
             - Easy จะมีบล็อคทั้งหมด 4*4 บล็อค
           </Text>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-            }}
-          >
+          <Text style={styles.setpositiontextinbox}>
             - Normal จะมีบล็อคทั้งหมด 6*6 บล็อค
           </Text>
-          <Text
-            style={{
-              color: "white",
-              fontSize: 18,
-            }}
-          >
-            - Hard จะมีบล็อคทั้งหมด 8*8 บล็อค
+          <Text style={styles.setpositiontextinbox}>
+            - Hard จะมีบล็อคทั้งหมด 6*6 บล็อค แต่จะมีความเร็วมากกว่าโหมด Normal
           </Text>
           <Text
             style={{
-              color: "white",
+              color: "red",
               fontSize: 18,
+              margin: 15,
+              fontWeight: "bold",
             }}
           >
-            - Extreme จะมีบล็อคทั้งหมด 10*10 บล็อค และมีสิ่งกีดขวางขณะเล่น
+            2. หลังจากทำการเลือกโหมดแล้ว จะทำเข้าสู่หน้าหลักของเกม
+            หลักจากนั้นกดปุ่มไปตามที่ไฟกระพริบขึ้นมาในแต่ละบล็อค
+            หลังจากไฟขึ้นมาแล้ว ไฟจะดับลง เราจะต้องจำให้ได้ว่า
+            ไฟดวงไหนบ้างที่ติดขึ้นมา และกดตาม ถ้าคุณทำได้ คุณจะได้คะแนนเพิ่ม
+            หากคุณกดพลาด เกมจะจบลง
           </Text>
+          <Image
+            style={styles.howtoplay}
+            source={require("../assets/howtoplay.png")}
+          />
         </View>
       </ScrollView>
     </View>
@@ -123,6 +125,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     alignItems: "center",
+  },
+  howtoplay: {
+    width: "100%",
+    height: 200,
+  },
+  setpositiontextinbox: {
+    color: "white",
+    fontSize: 15,
+    marginBottom: 7,
+    marginLeft: 20,
+    marginRight: 20,
   },
   exitbt: {
     width: 25,
