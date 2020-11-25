@@ -8,6 +8,7 @@ import {
   Alert,
   Image,
 } from "react-native";
+import * as firebase from "firebase";
 
 export default function Easy(props) {
   const [gameplay, setGamePlay] = useState(false);
@@ -87,6 +88,13 @@ export default function Easy(props) {
       } else {
         //กดผิด = แพ้
         console.log("Defeat!!!");
+        console.log(score);
+        console.log(firebase.auth().currentUser.email);
+        firebase.firestore().collection("score").add({
+          email: firebase.auth().currentUser.email,
+          mode: "easy",
+          point: score,
+        });
         Alert.alert(
           "Defeat!",
           "Your score is " + score,
