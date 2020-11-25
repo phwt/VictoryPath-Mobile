@@ -3,43 +3,67 @@ import { View, Button, StyleSheet, TouchableOpacity, Text , Alert} from "react-n
 
 
 export default function Easy(props) {
-    const [activeColor, setActiveColor] = useState("#0070ff");
     const [gameplay, setGamePlay] = useState(false);
     const [score, setScore] = useState(0);
-    const [pathList, setPathList] = useState([])
+    const [ansList, setAnsList] = useState([]);
+    const [click, setClick] = useState(0);
+    const [path1, setPath1] = useState("#f73232");
+    const [path2, setPath2] = useState("#f73232");
+    const [path3, setPath3] = useState("#f73232");
+    const [path4, setPath4] = useState("#f73232");
 
     //Customize Button
-    const PathButton = ({onPress}) => (<TouchableOpacity onPress={onPress} style={{margin: "0.5%",
+    const PathButton = ({bgcolor, onPress}) => (<TouchableOpacity onPress={onPress} style={{margin: "0.5%",
     width: 75,
     height: 75,
-    backgroundColor: activeColor,
+    backgroundColor: bgcolor,
     borderRadius: 35}}/>);
     const WrongButton = ({onPress}) => (<TouchableOpacity onPress={onPress} style={styles.grid}/>);
-    if (gameplay)
-    var timedisplay = 1000; //เวลาที่จะแสดงสีค้างไว้
+
+    var timedisplay = 500; //เวลาที่จะแสดงสีค้างไว้
     var size = 4; //ไซส์ของตาราง
-    // var score = 0; //คะแนน
-    var click = 0; //กดไปกี่ครั้ง
+
     var rows = [];
-    var buttonValue = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
+    var buttonValue = [[1,2,3,4],
+                        [5,6,7,8],
+                        [9,10,11,12],
+                        [13,14,15,16]];
+
     //เช็คคำตอบ
     function addToAnswer(number){
-        if (activeColor == "#7F8080"){
-            if (number == pathList[click]){
-                click += 1;
+        if (path1 == "#7F8080"){    //เช็คว่าตัวสุดท้ายยังไม่ถูกกด
+            if (number == ansList[click]){      //เช็คว่าตอบถูก
+                setClick(click+1);
+                switch (click+1) {      //แสดงสีปุ่มที่กด
+                    case 4:
+                        setPath1("#f73232");
+                        break;
+                    case 3:
+                        setPath2("#f73232");
+                        break;
+                    case 2:
+                        setPath3("#f73232");
+                        break;
+                    case 1:
+                        setPath4("#f73232");
+                        break;
+                    default:
+                        break;
+                }
                 console.log(number+" Nice bro!!!");
-                if (click == size){
+                if (click+1 == size){       //ตอบถูกครบรับไปเลย 1 คะแนน
                     setScore(score+1);
-                    click = 0;
+                    setClick(0);
                     console.log(gameplay);
                     setGamePlay(false);
                     console.log("endgame:"+gameplay);
-                    pathList.splice(0, size);
-                    console.log("result at end: "+pathList);
+                    ansList.splice(0, size);
+                    console.log("result at end: "+ansList);
                     rows.splice(0, size);
-                    setActiveColor("#0070ff");
+
                 }
             }else{
+                //กดผิด = แพ้
                 console.log("Defeat!!!");
                 Alert.alert(
                     "Defeat!",
@@ -48,14 +72,13 @@ export default function Easy(props) {
                       { text: "OK", onPress: () => props.navigation.navigate("GameModeScreen")}
                     ],
                     { cancelable: false }
-                  );
-                // Alert.alert("Defeat! your score is " + score);
-                
+                );                
             }
         }
     }
 
     function createGrid(){
+        // สุ่มเลขเพื่อทำทาง
         if (gameplay==false){
         var temp = 100;
             for (let i = 0, j = size - 1; i < size; i++, j--) {
@@ -74,21 +97,34 @@ export default function Easy(props) {
                 } else
                     pos = Math.floor(Math.random() * size);
                 temp = pos;
-                pathList.push(buttonValue[j][pos]);
+                ansList.push(buttonValue[j][pos]);
             }
             console.log("gameplay:"+gameplay);
-            console.log("result: "+pathList);
+            console.log("result: "+ansList);
             setGamePlay(true);
-            // setPathList([]);
-            // setGamePlay(false);
-            // console.log("result: "+pathList);
+
         //สร้าง Grid            
         }
         for (let i = 0; i < size; i++) {
             let row = [];
             for (let j = 0; j < size; j++) {
-                if(pathList.includes(buttonValue[i][j])){
-                    row.push(<PathButton onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                if(ansList.includes(buttonValue[i][j])){
+                    switch (i) {
+                        case 0:
+                            row.push(<PathButton bgcolor={path1} onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                            break;
+                        case 1:
+                            row.push(<PathButton bgcolor={path2} onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                            break;
+                        case 2:
+                            row.push(<PathButton bgcolor={path3} onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                            break;
+                        case 3:
+                            row.push(<PathButton bgcolor={path4} onPress={()=>addToAnswer(buttonValue[i][j])}/>);
+                            break;
+                        default:
+                            break;
+                    }
                 }else{
                     row.push(<WrongButton onPress={()=>addToAnswer(buttonValue[i][j])}/>);
                   } 
@@ -96,16 +132,23 @@ export default function Easy(props) {
             rows.push(<View style={styles.gridlayout}>{row}</View>);
         }}
 
+        // เปลี่ยนสีกลับเป็นสีเทา
         useEffect(() => {
             const toggle = setTimeout(function(){
-                setActiveColor("#7F8080");//เปลี่ยน Path กลับเป็นสีเทา
+                if (path1=="#f73232" && path3=="#f73232"){
+                    console.log("Set to Gray")
+                    setPath1("#7F8080");
+                    setPath2("#7F8080");
+                    setPath3("#7F8080");
+                    setPath4("#7F8080");
+                }
             }, timedisplay);
         })
 
         createGrid();
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Easy Mode</Text>
+            <Text style={styles.header}>Normal Mode</Text>
             <Text style={styles.header}>Score: {score}</Text>
             <View style={styles.frame}>
                 {rows}
@@ -115,7 +158,6 @@ export default function Easy(props) {
                     <Text style={styles.text}>select mode</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnred} onPress={() => {
-                  
             props.navigation.navigate("GameScreen");
           }}>
                     <Text style={styles.text}>End game</Text>

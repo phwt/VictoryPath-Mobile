@@ -21,7 +21,7 @@ export default function Login(props) {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // alert("Login Success!");
+        alert("Login Success!");
         props.navigation.navigate("GameScreen");
       })
       .catch((error) => {
@@ -40,9 +40,9 @@ export default function Login(props) {
       });
   };
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  // const toggleModal = () => {
+  //   setModalVisible(!isModalVisible);
+  // };
   const switchToSignUp = () => {
     props.navigation.replace("RegisterScreen");
   };
@@ -61,9 +61,13 @@ export default function Login(props) {
         onChangeText={(getPassword) => setPassword(getPassword)}
         secureTextEntry={true}
       />
-      <Button style={styles.button} title="Login" onPress={toggleModal} />
+      <Button
+        style={styles.button}
+        title="Login"
+        onPress={() => checkLogin(email, password)}
+      />
 
-      <Modal isVisible={isModalVisible}>
+      {/* <Modal isVisible={isModalVisible}>
         <View style={styles.loginbt}>
           <Text style={{ fontSize: 30, color: "red" }}>Confirm Login!</Text>
           <Text>{email}</Text>
@@ -74,7 +78,7 @@ export default function Login(props) {
             <TouchableOpacity onPress={toggleModal}>
               <Text> Cancel</Text>
             </TouchableOpacity> */}
-            <Button
+      {/* <Button
               title="Confirm"
               onPress={() => checkLogin(email, password)}
             />
@@ -83,22 +87,22 @@ export default function Login(props) {
               onPress={toggleModal}
               title="cancel"
             />
-          </View>
-          {/* <Button
+          </View> */}
+      {/* <Button
             style={styles.button2}
             title="Let go"
             onPress={() => checkLogin(email, password)}
           />
           <Button style={styles.button2} onPress={toggleModal} title="cancel" /> */}
-        </View>
-      </Modal>
+      {/* </View> */}
+      {/* </Modal> */}
       {/* <TouchableOpacity
         style={styles.button}
         onPress={() => checkLogin(email, password)}
         title="Login"
       ></TouchableOpacity> */}
 
-      <TouchableOpacity onPress={switchToSignUp} style={styles.gotoregist}>
+      <TouchableOpacity style={styles.gotoregist}>
         <Text style={styles.gotoregist}>Doesn't have any account ? </Text>
       </TouchableOpacity>
     </View>
