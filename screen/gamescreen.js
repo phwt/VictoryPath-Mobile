@@ -10,10 +10,20 @@ import {
   Image,
   Alert,
 } from "react-native";
+// import { Audio } from "expo-av";
 // import email from "./login";
 // import firebase from "firebase";
 
 const Game = (props) => {
+  // const bgSound = new Audio.Sound();
+  // bgSound.loadAsync(require("../assets/sound/bgmusic.mp3"));
+
+  // function playSound() {
+  //   console.log("play");
+  //   bgSound.playAsync();
+  // }
+  // playSound();
+
   return (
     <View style={styles.container}>
       <View style={styles.setpositionapge}>

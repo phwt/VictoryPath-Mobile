@@ -10,13 +10,11 @@ import {
   MyText,
 } from "react-native";
 import firebase from "firebase";
-import Modal from "react-native-modal";
-import Register from "./register";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isModalVisible, setModalVisible] = useState(false);
+  // const [isModalVisible, setModalVisible] = useState(false);
   const checkLogin = (email, password) => {
     firebase
       .auth()
@@ -26,27 +24,13 @@ export default function Login(props) {
         props.navigation.navigate("GameScreen");
       })
       .catch((error) => {
-        if (error.code === "auth/email-already-in-use") {
-          // console.log("Email or Password was wrong!");
-          alert("Email or Password was wrong!");
-          props.navigation.replace("LoginScreen");
-        }
-
-        if (error.code === "auth/invalid-email") {
-          // console.log("That email address is invalid!");
-          alert("That email address is invalid!");
-          props.navigation.replace("LoginScreen");
-        }
-        console.error(error);
+        alert(error.message);
       });
   };
 
-  // const toggleModal = () => {
-  //   setModalVisible(!isModalVisible);
+  // const switchToSignUp = () => {
+  //   props.navigation.replace("RegisterScreen");
   // };
-  const switchToSignUp = () => {
-    props.navigation.replace("RegisterScreen");
-  };
 
   return (
     <View style={styles.container}>

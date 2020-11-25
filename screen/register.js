@@ -12,6 +12,7 @@ import {
 import firebase from "firebase";
 
 const signUp = (email, password, props) => {
+  console.log(props);
   console.log(email, password);
   firebase
     .auth()
@@ -21,12 +22,13 @@ const signUp = (email, password, props) => {
         "sign in success",
         "User account created & signed in!",
         [
-          { text: "OK", onPress: () => props.navigation.navigate("GameScreen")}
+          {
+            text: "OK",
+            onPress: () => props.navigation.navigate("GameScreen"),
+          },
         ],
         { cancelable: false }
       );
-      
-      
     })
     .catch((error) => {
       if (error.code === "auth/email-already-in-use") {
@@ -62,14 +64,9 @@ export default function Register(props) {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => signUp(email, password, props) }
+        onPress={() => signUp(email, password, props)}
       >
-        <Text
-          onPress={() => signUp(email, password)}
-          style={{ color: "white" }}
-        >
-          Sign up
-        </Text>
+        <Text style={{ color: "white" }}>Sign up</Text>
       </TouchableOpacity>
     </View>
   );

@@ -23,12 +23,22 @@ export default function Scoreboard(hello) {
       // .where("email", "==", user)
       .where("mode", "==", selectedValue)
       .get();
+
+    const old = [];
+
     score.forEach((props) => {
       console.log(props.data());
-      setScores((o) => {
-        return [...o, props.data()];
-      });
+
+      old.push(props.data());
+
+      // setScores((o) => {
+      //   return [...o, props.data()];
+      // });
     });
+
+    old.sort((a, b) => b.point - a.point);
+
+    setScores(old);
   };
   useEffect(() => {
     showscore();

@@ -7,6 +7,7 @@ import GamesNavigator from "./navigation/navigator";
 import GameScreen from "./screen/gamescreen";
 import firebase from "firebase";
 import "firebase/firestore";
+// import { Audio } from "expo-av";
 
 // LogBox.ignoreWarnings(["Setting a timer"]);
 LogBox.ignoreAllLogs();
@@ -25,10 +26,14 @@ var firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
+// const bgsound = new Audio.Sound();
+// bgsound.loadAsync(require("./assets/sound/bgmusic.mp3"));
+
+// bgsound.playAsync();
 
 export default function App() {
   return (
-    // <View style={styles.container}>
+    // <View style={styles.container};
     <GamesNavigator />
   );
 }

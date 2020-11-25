@@ -8,6 +8,7 @@ import {
   Alert,
   Image,
 } from "react-native";
+// import { Audio } from "expo-av";
 import * as firebase from "firebase";
 
 export default function Easy(props) {
@@ -19,6 +20,24 @@ export default function Easy(props) {
   const [path2, setPath2] = useState("#f73232");
   const [path3, setPath3] = useState("#f73232");
   const [path4, setPath4] = useState("#f73232");
+
+  // const gamesound = new Audio.Sound();
+  // gamesound.loadAsync(require("../../assets/sound/bgmusic.mp3"));
+
+  // function playSound(num) {
+  // console.log("hi");
+  // if (num === 0) {
+  // gamesound.playAsync();
+  // }
+  // }
+  // function stopSound() {
+  //   gamesound.stopAsync();
+  //    cat.stopAsync();
+  // }
+  // function unloadSound() {
+  //   gamesound.unloadAsync();
+  //    cat.unloadAsync();
+  // }
 
   //Customize Button
   const PathButton = ({ bgcolor, onPress }) => (
