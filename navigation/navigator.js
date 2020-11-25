@@ -25,15 +25,15 @@ const GamesNavigator = createStackNavigator({
   },
   EasyScreen: {
     screen: easy,
-    navigationOptions: { headerShown: true },
+    navigationOptions: { headerShown: false },
   },
   NormalScreen: {
     screen: normal,
-    navigationOptions: { headerShown: true },
+    navigationOptions: { headerShown: false },
   },
   HardScreen: {
     screen: hard,
-    navigationOptions: { headerShown: true },
+    navigationOptions: { headerShown: false },
   },
   ScoreBoardScreen: {
     screen: Scoreboard,

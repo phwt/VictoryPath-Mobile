@@ -151,9 +151,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   logo: {
-    marginTop: "10%",
     height: "10%",
     width: 300,
-    marginBottom: "10%",
+    // marginBottom: "15%",
   },
 });

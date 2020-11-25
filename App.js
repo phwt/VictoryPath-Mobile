@@ -2,14 +2,14 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet } from "react-native";
 import "firebase/firestore";
-// import { LogBox } from "react-native";
+import { LogBox } from "react-native";
 import GamesNavigator from "./navigation/navigator";
 import GameScreen from "./screen/gamescreen";
 import firebase from "firebase";
 import "firebase/firestore";
 
 // LogBox.ignoreWarnings(["Setting a timer"]);
-
+LogBox.ignoreAllLogs();
 var firebaseConfig = {
   apiKey: "AIzaSyAN_QaruL59j_7MhK8rmJoZOMUpVbXraEI",
   authDomain: "victorypath-b33ae.firebaseapp.com",
