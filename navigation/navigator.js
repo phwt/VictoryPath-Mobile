@@ -9,7 +9,6 @@ import Tutorial from "../screen/tutorial";
 import easy from "../screen/Mode/easy";
 import normal from "../screen/Mode/normal";
 import hard from "../screen/Mode/hard";
-import extreme from "../screen/Mode/extreme";
 import checkLogin from "../screen/login";
 
 const GamesNavigator = createStackNavigator({

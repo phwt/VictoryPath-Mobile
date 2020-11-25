@@ -3,7 +3,7 @@ import { View, Button, StyleSheet, TouchableOpacity, Text , Alert} from "react-n
 
 
 export default function Normal(props) {
-    const [activeColor, setActiveColor] = useState("#40FFFF");
+    const [activeColor, setActiveColor] = useState("#f73232");
     const [gameplay, setGamePlay] = useState(false);
     const [score, setScore] = useState(0);
     const [pathList, setPathList] = useState([])
@@ -41,7 +41,7 @@ export default function Normal(props) {
                     pathList.splice(0, size);
                     console.log("result at end: "+pathList);
                     rows.splice(0, size);
-                    setActiveColor("#40FFFF");
+                    setActiveColor("#f73232");
                 }
             }else{
                 console.log("Defeat!!!");
