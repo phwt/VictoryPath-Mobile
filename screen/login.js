@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import firebase from "firebase";
 import Modal from "react-native-modal";
+import Register from "./register";
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
@@ -102,7 +103,12 @@ export default function Login(props) {
         title="Login"
       ></TouchableOpacity> */}
 
-      <TouchableOpacity style={styles.gotoregist}>
+      <TouchableOpacity
+        style={styles.gotoregist}
+        onPress={() => {
+          props.navigation.navigate("RegisterScreen");
+        }}
+      >
         <Text style={styles.gotoregist}>Doesn't have any account ? </Text>
       </TouchableOpacity>
     </View>
