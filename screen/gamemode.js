@@ -22,7 +22,7 @@ export default function GameMode(props) {
         <Image style={styles.exitbt} source={require("../assets/arrow.png")} />
       </TouchableOpacity>
 
-      <Text style={styles.header}>Victory Path</Text>
+      <Image style={styles.logo} source={require("../assets/logo.jpg")} />
       <Image style={styles.image} source={require("../assets/boomboom.gif")} />
 
       {/* ปุ่มเซ็ตที่1 แถวบน */}
@@ -149,5 +149,11 @@ const styles = StyleSheet.create({
     fontSize: 50,
     paddingBottom: 20,
     alignItems: "flex-start",
+  },
+  logo: {
+    marginTop: "10%",
+    height: "10%",
+    width: 300,
+    marginBottom: "10%",
   },
 });
