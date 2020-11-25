@@ -40,9 +40,9 @@ export default function Login(props) {
       });
   };
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  // const toggleModal = () => {
+  //   setModalVisible(!isModalVisible);
+  // };
   const switchToSignUp = () => {
     props.navigation.replace("RegisterScreen");
   };
