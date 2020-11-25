@@ -16,7 +16,7 @@ export default function Normal(props) {
     borderRadius: 30}}/>);
     const WrongButton = ({onPress}) => (<TouchableOpacity onPress={onPress} style={styles.grid}/>);
     if (gameplay)
-    var timedisplay = 3000; //เวลาที่จะแสดงสีค้างไว้
+    var timedisplay = 2000; //เวลาที่จะแสดงสีค้างไว้
     var size = 5; //ไซส์ของตาราง
     // var score = 0; //คะแนน
     var click = 0; //กดไปกี่ครั้ง
