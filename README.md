@@ -1,4 +1,4 @@
 # VictoryPath
 ### React Native Project
 
-![GitHub Logo](/asset/logo.png)
+![GitHub Logo](/assets/logo.png)
