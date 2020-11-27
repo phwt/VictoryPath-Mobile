@@ -56,7 +56,7 @@ export default function Easy(props) {
     <TouchableOpacity onPress={onPress} style={styles.grid} />
   );
 
-  var timedisplay = 500; //เวลาที่จะแสดงสีค้างไว้
+  var timedisplay = 1000; //เวลาที่จะแสดงสีค้างไว้
   var size = 4; //ไซส์ของตาราง
 
   var rows = [];
