@@ -11,22 +11,25 @@ import {
 } from "react-native";
 import firebase from "firebase";
 
-export default function Login(props) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  // const [isModalVisible, setModalVisible] = useState(false);
-  const checkLogin = (email, password) => {
+export const checkLogin = (email, password) => {
+  return new Promise((resolve, reject) => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        alert("Login Success!");
-        props.navigation.navigate("GameScreen");
+        resolve(true)
       })
       .catch((error) => {
-        alert(error.message);
+        reject(error)
       });
-  };
+  })
+};
+
+export default function Login(props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [isModalVisible, setModalVisible] = useState(false);
+
 
   // const switchToSignUp = () => {
   //   props.navigation.replace("RegisterScreen");
@@ -49,7 +52,17 @@ export default function Login(props) {
       <Button
         style={styles.button}
         title="Login"
-        onPress={() => checkLogin(email, password)}
+        onPress={() => {
+          checkLogin(email, password).then(
+            () => {
+              alert("Login Success!");
+              props.navigation.navigate("GameScreen");
+            }
+          ).catch((error) => {
+            alert(error.message);
+          })
+
+        }}
       />
 
       {/* <Modal isVisible={isModalVisible}>

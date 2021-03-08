@@ -18,6 +18,7 @@
     "expo-status-bar": "~1.0.2",
     "firebase": "7.9.0",
     "popup-ui": "^1.2.2",
+    "prettier": "^2.2.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
@@ -41,6 +42,9 @@
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ],
+    "setupFiles": [
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
     ]
   }
 }

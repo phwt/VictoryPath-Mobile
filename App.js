@@ -11,7 +11,7 @@ import "firebase/firestore";
 
 // LogBox.ignoreWarnings(["Setting a timer"]);
 LogBox.ignoreAllLogs();
-var firebaseConfig = {
+export var firebaseConfig = {
   apiKey: "AIzaSyAN_QaruL59j_7MhK8rmJoZOMUpVbXraEI",
   authDomain: "victorypath-b33ae.firebaseapp.com",
   databaseURL: "https://victorypath-b33ae.firebaseio.com",
