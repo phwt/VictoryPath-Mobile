@@ -48,21 +48,22 @@ export default function Login(props) {
         onChangeText={(getPassword) => setPassword(getPassword)}
         secureTextEntry={true}
       />
-      <Button
-        style={styles.button}
-        title="Login"
-        nativeID="loginButton"
-        onPress={() => {
-          checkLogin(email, password)
-            .then(() => {
-              alert("Login Success!");
-              props.navigation.navigate("GameScreen");
-            })
-            .catch((error) => {
-              alert(error.message);
-            });
-        }}
-      />
+      <div id="loginButton">
+        <Button
+          style={styles.button}
+          title="Login"
+          onPress={() => {
+            checkLogin(email, password)
+              .then(() => {
+                alert("Login Success!");
+                props.navigation.navigate("GameScreen");
+              })
+              .catch((error) => {
+                alert(error.message);
+              });
+          }}
+        />
+      </div>
 
       {/* <Modal isVisible={isModalVisible}>
         <View style={styles.loginbt}>
