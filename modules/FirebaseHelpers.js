@@ -12,6 +12,12 @@ export const setupDemoUser = async () => {
   await firebase.auth().signOut();
 };
 
+export const loginDemoUser = async () => {
+  await firebase
+    .auth()
+    .signInWithEmailAndPassword("jesttestuser@test.com", "P@ssw0rd");
+};
+
 export const teardownDemoUser = async () => {
   await firebase
     .auth()

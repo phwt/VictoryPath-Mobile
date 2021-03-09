@@ -17,19 +17,18 @@ export const checkLogin = (email, password) => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        resolve(true)
+        resolve(true);
       })
       .catch((error) => {
-        reject(error)
+        reject(error);
       });
-  })
+  });
 };
 
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [isModalVisible, setModalVisible] = useState(false);
-
 
   // const switchToSignUp = () => {
   //   props.navigation.replace("RegisterScreen");
@@ -52,16 +51,16 @@ export default function Login(props) {
       <Button
         style={styles.button}
         title="Login"
+        nativeID="loginButton"
         onPress={() => {
-          checkLogin(email, password).then(
-            () => {
+          checkLogin(email, password)
+            .then(() => {
               alert("Login Success!");
               props.navigation.navigate("GameScreen");
-            }
-          ).catch((error) => {
-            alert(error.message);
-          })
-
+            })
+            .catch((error) => {
+              alert(error.message);
+            });
         }}
       />
 

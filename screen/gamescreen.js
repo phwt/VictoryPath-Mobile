@@ -41,10 +41,7 @@ const Game = (props) => {
             props.navigation.navigate("GameModeScreen");
           }}
         >
-          <Image
-            style={{ width: 25, height: 25 }}
-            source={require("../assets/playbutton.png")}
-          />
+          <Text style={styles.tutorial}> Play </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.ttpbt}
