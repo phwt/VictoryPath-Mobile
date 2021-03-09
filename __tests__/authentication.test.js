@@ -1,6 +1,9 @@
 import { checkLogin } from "../screen/login";
-import { firebaseConfig } from "../App";
-import firebase from "firebase";
+import {
+  initializeFirebase,
+  setupDemoUser,
+  teardownDemoUser,
+} from "../modules/FirebaseHelpers";
 
 const loginWrapper = async (username, password) => {
   let response;
@@ -13,18 +16,12 @@ const loginWrapper = async (username, password) => {
 };
 
 beforeAll(async () => {
-  if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-
-  // Create user for testing
-  await firebase
-    .auth()
-    .createUserWithEmailAndPassword("jesttestuser@test.com", "P@ssw0rd");
-  await firebase.auth().signOut();
+  initializeFirebase();
+  await setupDemoUser();
 });
 
 afterAll(async () => {
-  await checkLogin("jesttestuser@test.com", "P@ssw0rd");
-  await firebase.auth().currentUser.delete();
+  await teardownDemoUser();
 });
 
 describe("Firebase Authentication - Login", () => {
