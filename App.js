@@ -10,7 +10,7 @@ import "firebase/firestore";
 // import { Audio } from "expo-av";
 
 // LogBox.ignoreWarnings(["Setting a timer"]);
-LogBox.ignoreAllLogs();
+// LogBox.ignoreAllLogs();
 export var firebaseConfig = {
   apiKey: "AIzaSyAN_QaruL59j_7MhK8rmJoZOMUpVbXraEI",
   authDomain: "victorypath-b33ae.firebaseapp.com",

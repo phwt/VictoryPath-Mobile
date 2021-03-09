@@ -3,9 +3,13 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    jest: true
+    jest: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:cypress/recommended",
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
