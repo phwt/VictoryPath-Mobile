@@ -24,4 +24,13 @@ describe("Gameplay as Guest", () => {
     cy.wait(1100);
     cy.get(":nth-child(3) > :nth-child(2) > :nth-child(3)").click();
   });
+
+  it("exit game early", () => {
+    cy.visit("http://localhost:19006/");
+    cy.contains("Play").click();
+    cy.contains("Hard").click();
+    cy.wait(1100);
+    cy.contains("End game").click();
+    cy.contains("End game").should("not.be.visible");
+  });
 });
