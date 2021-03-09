@@ -11,36 +11,46 @@ import {
 } from "react-native";
 import firebase from "firebase";
 
+export const register = (email, password) => {
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          console.log("That email address is already in use!");
+        }
+
+        if (error.code === "auth/invalid-email") {
+          console.log("That email address is invalid!");
+        }
+
+        console.error(error);
+        reject(error);
+      });
+  });
+};
+
 const signUp = (email, password, props) => {
   console.log(props);
   console.log(email, password);
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then(() => {
-      Alert.alert(
-        "sign in success",
-        "User account created & signed in!",
-        [
-          {
-            text: "OK",
-            onPress: () => props.navigation.navigate("GameScreen"),
-          },
-        ],
-        { cancelable: false }
-      );
-    })
-    .catch((error) => {
-      if (error.code === "auth/email-already-in-use") {
-        console.log("That email address is already in use!");
-      }
 
-      if (error.code === "auth/invalid-email") {
-        console.log("That email address is invalid!");
-      }
-
-      console.error(error);
-    });
+  register(email, password).then(() => {
+    Alert.alert(
+      "sign in success",
+      "User account created & signed in!",
+      [
+        {
+          text: "OK",
+          onPress: () => props.navigation.navigate("GameScreen"),
+        },
+      ],
+      { cancelable: false }
+    );
+  });
 };
 
 export default function Register(props) {
