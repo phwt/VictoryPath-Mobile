@@ -1,4 +1,4 @@
-import { checkLogin } from "./login";
+import { checkLogin } from "../screen/login";
 import { firebaseConfig } from "../App";
 import firebase from "firebase";
 
@@ -20,6 +20,11 @@ beforeAll(async () => {
     .auth()
     .createUserWithEmailAndPassword("jesttestuser@test.com", "P@ssw0rd");
   await firebase.auth().signOut();
+});
+
+afterAll(async () => {
+  await checkLogin("jesttestuser@test.com", "P@ssw0rd");
+  await firebase.auth().currentUser.delete();
 });
 
 describe("Firebase Authentication - Login", () => {
@@ -47,11 +52,4 @@ describe("Firebase Authentication - Login", () => {
     );
     expect(response.code).toBe("auth/user-not-found");
   });
-});
-
-describe("Firebase Authentication - Register", () => {});
-
-afterAll(async () => {
-  await checkLogin("jesttestuser@test.com", "P@ssw0rd");
-  await firebase.auth().currentUser.delete();
 });
